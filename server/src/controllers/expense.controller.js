@@ -50,7 +50,7 @@ export const getExpenses = asyncHandler(async (req, res) => {
 
     const totalExpenses = await Expense.countDocuments(filter);
 
-    res.json({
+    return res.json({
       expenses,
       totalPages: Math.ceil(totalExpenses / limit),
       currentPage: parseInt(page),
@@ -63,5 +63,30 @@ export const getExpenses = asyncHandler(async (req, res) => {
 export const updateExpense = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const updatedExpense = await Expense.findByIdAndUpdate();
+  const updatedExpense = await Expense.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
+
+  if (!updatedExpense) {
+    throw new ApiError("404", "Expense not found");
+  }
+
+  return res
+    .status(201)
+    .json(new ApiResponse(201, updatedExpense, "Expense Updated Successfully"));
+});
+
+export const deleteExpense = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const deletedExpenses = await Expense.findByIdAndDelete(id);
+
+  if (!deletedExpenses) {
+    throw new ApiError("404", "Expense not found");
+  }
+
+  return res
+    .status(201)
+    .json(
+      new ApiResponse(201, deletedExpenses, "Expense deleted successfully")
+    );
 });

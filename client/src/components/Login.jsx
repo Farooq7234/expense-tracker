@@ -36,7 +36,7 @@ export default function Login() {
       setLoading(true);
       const response = await axios.post("/api/v1/users/login", data);
       console.log("Response:", response.data);
-      toast.success("login successful! 🎉");
+      toast.success(response.data.message);
 
       if (response.status == 200) {
         navigate("/dashboard");

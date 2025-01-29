@@ -38,7 +38,7 @@ export default function SignUpForm() {
       setLoading(true);
       const response = await axios.post("/api/v1/users/register", data);
       console.log("Response:", response.data);
-      toast.success("Sign-up successful! 🎉");
+      toast.success(response.data.message);
 
       if (response.status == 201) {
         navigate("/login");

@@ -11,7 +11,7 @@ const expenseSchema = new mongoose.Schema(
       required: [true, "Amount is required"],
       default: 0,
     },
-    categoy: {
+    category: {
       type: String,
       required: [true, "Category is required"],
     },
