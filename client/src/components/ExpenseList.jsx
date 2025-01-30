@@ -44,12 +44,9 @@ const ExpenseList = () => {
 
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get(
-        `/api/v1/expense/getexpenses?page=${currentPage}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`/api/v1/expense/getexpenses`, {
+        withCredentials: true,
+      });
       console.log("API Response:", response.data);
       setExpenses(response.data.expenses);
       setTotalPages(response.data.totalPages);
