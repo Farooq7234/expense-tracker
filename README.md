@@ -6,13 +6,13 @@ The **Mini Expense Tracker** is a full-stack web application that helps users tr
 
 ## 🌐 Live Demo
 
-🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/) (if deployed)
+🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/)
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, MUI, MUI X Charts / Recharts, Tailwind CSS
-- **Backend:** Node.js + Express.js (or Python + FastAPI)
-- **Database:** MongoDB (Mongoose) or PostgreSQL (Sequelize)
+- **Frontend:** React.js, Shadcn, Charts / Recharts, Tailwind CSS
+- **Backend:** Node.js + Express.js
+- **Database:** MongoDB (Mongoose)
 - **Authentication:** JWT (HTTP-only cookies)
 - **Deployment:** Render
 
