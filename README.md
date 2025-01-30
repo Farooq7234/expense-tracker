@@ -86,11 +86,11 @@ GET /api/v1/expense/getinsights
 
 Navigate to the client folder and run:
 
-```http
+```
 cd client 
 ```
 
-```http
+```
 npm run dev
 ```
 
@@ -98,10 +98,10 @@ npm run dev
 
 Navigate to the server folder and run:
 
-```http
+```
 cd server
 ```
 
-```http
+```
 npm run dev
 ```
