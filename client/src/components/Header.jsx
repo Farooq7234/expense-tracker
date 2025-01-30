@@ -10,7 +10,7 @@ export default function Header() {
   useEffect(() => {
     const checkUserLogin = async () => {
       try {
-        const response = await axios.get("/api/current-user");
+        const response = await axios.get("/api/v1/users/current-user");
         if (response.data.status === 200) {
           setUser(response.data.data);
           setIsLoggedIn(true);
