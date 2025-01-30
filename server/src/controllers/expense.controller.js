@@ -2,7 +2,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import Expense from "../models/expense.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken";
 
 export const addExpense = asyncHandler(async (req, res) => {
   const { amount, category, date, description } = req.body;
@@ -88,5 +87,37 @@ export const deleteExpense = asyncHandler(async (req, res) => {
     .status(201)
     .json(
       new ApiResponse(201, deletedExpenses, "Expense deleted successfully")
+    );
+});
+
+export const getSpendingInsights = asyncHandler(async (req, res) => {
+  const userId = req.userId;
+
+  const categoryWiseSpending = await Expense.aggregate([
+    { $match: { user: userId } },
+    {
+      $group: {
+        _id: "$category",
+        totalSpent: { $sum: "$amount" },
+      },
+    },
+  ]);
+
+  const totalSpending = categoryWiseSpending.reduce(
+    (sum, category) => sum + category.totalSpent,
+    0
+  );
+
+  // Calculate percentage distribution
+  const spendingDistribution = categoryWiseSpending.map((category) => ({
+    category: category._id,
+    totalSpent: category.totalSpent,
+    percentage: ((category.totalSpent / totalSpending) * 100).toFixed(2), // Convert to percentage
+  }));
+
+  return res
+    .status(201)
+    .json(
+      new ApiResponse(200, spendingDistribution, "Spending insights calculated")
     );
 });

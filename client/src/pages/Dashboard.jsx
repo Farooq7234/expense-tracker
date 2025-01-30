@@ -1,5 +1,13 @@
+import ExpenseList from "@/components/ExpenseList";
+import Insight from "@/components/Insights";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <ExpenseList />;
+      <Insight />
+    </>
+  );
 };
 
 export default Dashboard;

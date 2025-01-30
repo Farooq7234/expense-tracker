@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Schema validation
 const formSchema = z.object({
@@ -44,7 +44,7 @@ export default function Login() {
       reset();
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error);
+      toast.error(error.response?.data?.message || "Login failed");
       setLoading(false);
     } finally {
       setLoading(false);
@@ -53,7 +53,6 @@ export default function Login() {
 
   return (
     <>
-      {" "}
       <Card className="max-w-md mx-auto mt-10 p-6 shadow-lg">
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">
@@ -101,9 +100,17 @@ export default function Login() {
 
             {/* Submit Button */}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "logining..." : "login"}
+              {loading ? "Logging in..." : "Login"}
             </Button>
           </form>
+
+          {/* Sign Up Link */}
+          <p className="text-center text-sm text-gray-600 mt-4">
+            Don't have an account?{" "}
+            <Link to="/signup" className="text-blue-600 hover:underline">
+              Sign up
+            </Link>
+          </p>
         </CardContent>
       </Card>
       <Toaster />
