@@ -13,6 +13,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import {
   Table,
   TableHeader,
   TableRow,
@@ -27,18 +35,22 @@ const ExpenseList = () => {
   const [selectedExpense, setSelectedExpense] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const url = "https://expense-tracker-backend-va7x.onrender.com";
 
   useEffect(() => {
     fetchExpenses();
-  }, []);
+  }, [currentPage]);
 
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get(`/api/v1/expense/getexpenses`, {
+      const response = await axios.get(`${url}/api/v1/expense/getexpenses`, {
         withCredentials: true,
       });
       console.log("API Response:", response.data);
       setExpenses(response.data.expenses);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
       toast({
         title: "Error",
@@ -50,7 +62,7 @@ const ExpenseList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/v1/expense/delete/${id}`, {
+      await axios.delete(`${url}/api/v1/expense/delete/${id}`, {
         withCredentials: true,
       });
       await fetchExpenses();
@@ -77,7 +89,7 @@ const ExpenseList = () => {
     try {
       if (isAdding) {
         const response = await axios.post(
-          "/api/v1/expense/add",
+          `${url}/api/v1/expense/add`,
           selectedExpense,
           { withCredentials: true }
         );
@@ -90,7 +102,7 @@ const ExpenseList = () => {
         toast({ title: "Success", description: "Expense added successfully" });
       } else {
         await axios.put(
-          `/api/v1/expense/update/${selectedExpense._id}`,
+          `${url}/api/v1/expense/update/${selectedExpense._id}`,
           selectedExpense,
           { withCredentials: true }
         );
@@ -108,6 +120,23 @@ const ExpenseList = () => {
         variant: "destructive",
       });
     }
+  };
+
+  const renderPaginationItems = () => {
+    const items = [];
+    for (let i = 1; i <= totalPages; i++) {
+      items.push(
+        <PaginationItem key={i}>
+          <PaginationLink
+            onClick={() => setCurrentPage(i)}
+            isActive={currentPage === i}
+          >
+            {i}
+          </PaginationLink>
+        </PaginationItem>
+      );
+    }
+    return items;
   };
 
   return (
@@ -156,6 +185,33 @@ const ExpenseList = () => {
                 ))}
               </TableBody>
             </Table>
+            {totalPages > 1 && (
+              <div className="mt-4 flex justify-center">
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        onClick={() =>
+                          setCurrentPage((prev) => Math.max(prev - 1, 1))
+                        }
+                        disabled={currentPage === 1}
+                      />
+                    </PaginationItem>
+                    {renderPaginationItems()}
+                    <PaginationItem>
+                      <PaginationNext
+                        onClick={() =>
+                          setCurrentPage((prev) =>
+                            Math.min(prev + 1, totalPages)
+                          )
+                        }
+                        disabled={currentPage === totalPages}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
+            )}
           </>
         ) : (
           <p>No expenses found.</p>

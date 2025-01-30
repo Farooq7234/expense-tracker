@@ -7,11 +7,12 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const url = "https://expense-tracker-backend-va7x.onrender.com";
 
   useEffect(() => {
     const checkUserLogin = async () => {
       try {
-        const response = await axios.get("/api/v1/users/current-user");
+        const response = await axios.get(`${url}/api/v1/users/current-user`);
         if (response.status === 200) {
           setUser(response.data.data);
           setIsLoggedIn(true);
@@ -29,7 +30,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/v1/users/logout");
+      await axios.post(`${url}/api/v1/users/logout`);
       setUser(null);
       setIsLoggedIn(false);
       navigate("/");

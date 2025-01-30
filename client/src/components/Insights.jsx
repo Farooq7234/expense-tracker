@@ -22,13 +22,14 @@ ChartJS.register(
 );
 
 const Insight = () => {
+  const url = "https://expense-tracker-backend-va7x.onrender.com";
   const [insights, setInsights] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchInsights = async () => {
       try {
-        const response = await axios.get("/api/v1/expense/insights");
+        const response = await axios.get(`${url}/api/v1/expense/insights`);
         setInsights(response.data.data);
         setLoading(false);
       } catch (error) {
