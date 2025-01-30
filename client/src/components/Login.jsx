@@ -12,7 +12,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 
-// Schema validation
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
@@ -55,7 +54,7 @@ export default function Login() {
 
   return (
     <>
-      <Card className="max-w-md mx-auto mt-10 p-6 shadow-lg">
+      <Card className="max-w-md mx-auto mt-14 p-6 shadow-lg ">
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">
             Login
