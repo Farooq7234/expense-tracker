@@ -6,13 +6,13 @@ The **Mini Expense Tracker** is a full-stack web application that helps users tr
 
 ## 🌐 Live Demo
 
-🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/) 
+🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/) (if deployed)
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, Shadcn X Charts / Recharts, Tailwind CSS
-- **Backend:** Node.js + Express.js 
-- **Database:** MongoDB (Mongoose) 
+- **Frontend:** React.js, MUI, MUI X Charts / Recharts, Tailwind CSS
+- **Backend:** Node.js + Express.js (or Python + FastAPI)
+- **Database:** MongoDB (Mongoose) or PostgreSQL (Sequelize)
 - **Authentication:** JWT (HTTP-only cookies)
 - **Deployment:** Render
 
@@ -20,18 +20,31 @@ The **Mini Expense Tracker** is a full-stack web application that helps users tr
 
 1️⃣ **User Authentication** (Register/Login using JWT)  
 2️⃣ **Expense Management (CRUD)** (Add, Edit, Delete, View)  
-3️⃣ **Spending Insights** (Pie chart & bar graph analytics)  
-4️⃣ **Secure API** with authentication & validation
+3️⃣ **Filtering & Pagination** (Search by category & date range)  
+4️⃣ **Spending Insights** (Pie chart & bar graph analytics)  
+5️⃣ **Secure API** with authentication & validation
 
 ## 📸 Screenshots
 
-| Login                               | Signup                                | Home                              |
-| ----------------------------------- | ------------------------------------- | --------------------------------- |
-| ![Login](./client/public/login.png) | ![Signup](./client/public/signup.png) | ![Home](./client/public/home.png) |
+## Home
 
-| Dashboard                                   | Insights Chart                            |
-| ------------------------------------------- | ----------------------------------------- |
-| ![Dashboard](./client/public/dashboard.png) | ![Insights](./client/public/insights.png) |
+![Home](./client/public/home.png)
+
+## Login
+
+![Login](./client/public/login.png)
+
+## Signup
+
+![Signup](./client/public/signup.png)
+
+## Dashboard
+
+![Dashboard](./client/public/dashboard.png)
+
+## Insights Chart
+
+![Insights](./client/public/insights.png)
 
 ## 📜 API Documentation
 
@@ -79,7 +92,6 @@ DELETE /api/v1/expense/delete/:id
 GET /api/v1/expense/getinsights
 ```
 
-
 #### ▶️ Running the Project
 
 ## Frontend
@@ -87,7 +99,7 @@ GET /api/v1/expense/getinsights
 Navigate to the client folder and run:
 
 ```
-cd client 
+cd client
 ```
 
 ```
