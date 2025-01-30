@@ -20,7 +20,6 @@ const formSchema = z.object({
 });
 
 export default function SignUpForm() {
-  const url = "https://expense-tracker-backend-va7x.onrender.com";
   const {
     register,
     handleSubmit,
@@ -37,7 +36,7 @@ export default function SignUpForm() {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${url}/api/v1/users/register`, data);
+      const response = await axios.post(`/api/v1/users/register`, data);
       console.log("Response:", response.data);
       toast.success(response.data.message);
 

@@ -37,7 +37,6 @@ const ExpenseList = () => {
   const [isAdding, setIsAdding] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const url = "https://expense-tracker-backend-va7x.onrender.com";
 
   useEffect(() => {
     fetchExpenses();
@@ -45,7 +44,7 @@ const ExpenseList = () => {
 
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get(`${url}/api/v1/expense/getexpenses`, {
+      const response = await axios.get(`/api/v1/expense/getexpenses`, {
         withCredentials: true,
       });
       console.log("API Response:", response.data);
@@ -62,7 +61,7 @@ const ExpenseList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${url}/api/v1/expense/delete/${id}`, {
+      await axios.delete(`/api/v1/expense/delete/${id}`, {
         withCredentials: true,
       });
       await fetchExpenses();
@@ -89,7 +88,7 @@ const ExpenseList = () => {
     try {
       if (isAdding) {
         const response = await axios.post(
-          `${url}/api/v1/expense/add`,
+          `/api/v1/expense/add`,
           selectedExpense,
           { withCredentials: true }
         );
@@ -102,7 +101,7 @@ const ExpenseList = () => {
         toast({ title: "Success", description: "Expense added successfully" });
       } else {
         await axios.put(
-          `${url}/api/v1/expense/update/${selectedExpense._id}`,
+          `/api/v1/expense/update/${selectedExpense._id}`,
           selectedExpense,
           { withCredentials: true }
         );

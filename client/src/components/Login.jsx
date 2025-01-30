@@ -31,12 +31,11 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const url = "https://expense-tracker-backend-va7x.onrender.com";
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${url}/api/v1/users/login`, data);
+      const response = await axios.post(`/api/v1/users/login`, data);
       console.log("Response:", response.data);
       toast({ title: response.data.message });
 
