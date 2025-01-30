@@ -1,16 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import {
-  DollarSign,
-  PieChart,
-  TrendingUp,
-  Shield,
-  Menu,
-  X,
-} from "lucide-react";
+import { DollarSign, PieChart, TrendingUp, Shield } from "lucide-react";
 import Header from "@/components/Header";
 
 export default function Home() {
@@ -60,7 +52,7 @@ function HeroSection() {
             </p>
           </div>
           <div className="space-x-4">
-            <Button className="text-white" onClick={() => Navigate("/login")}>
+            <Button className="text-white">
               <Link to={"/login"}>Get started</Link>
             </Button>
           </div>

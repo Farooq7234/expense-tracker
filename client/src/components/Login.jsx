@@ -8,8 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
-import { toast, Toaster } from "react-hot-toast";
+
 import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 // Schema validation
 const formSchema = z.object({
@@ -18,6 +19,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
+  const { toast } = useToast();
   const {
     register,
     handleSubmit,
@@ -36,7 +38,7 @@ export default function Login() {
       setLoading(true);
       const response = await axios.post("/api/v1/users/login", data);
       console.log("Response:", response.data);
-      toast.success(response.data.message);
+      toast({ title: response.data.message });
 
       if (response.status == 200) {
         navigate("/dashboard");
@@ -44,7 +46,7 @@ export default function Login() {
       reset();
     } catch (error) {
       console.error("Error:", error);
-      toast.error(error.response?.data?.message || "Login failed");
+      toast({ title: "Login Failed", variant: "destructive" });
       setLoading(false);
     } finally {
       setLoading(false);
@@ -113,7 +115,6 @@ export default function Login() {
           </p>
         </CardContent>
       </Card>
-      <Toaster />
     </>
   );
 }
