@@ -80,27 +80,20 @@ GET /api/v1/expense/getinsights
 ```
 
 
-####▶️ Running the Project
+#### ▶️ Running the Project
 
-##Frontend
+## Frontend
 
 Navigate to the client folder and run:
 
-```
-cd client
-```
+```http cd client```
 
-```
-npm run dev
-```
-##Backend
+```http npm run dev```
+
+## Backend
 
 Navigate to the server folder and run:
 
-```
-cd server
-'''
+```http cd server'''
 
-```
-npm run dev
-```
+```http npm run dev```
