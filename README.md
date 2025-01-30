@@ -86,14 +86,22 @@ GET /api/v1/expense/getinsights
 
 Navigate to the client folder and run:
 
-```http cd client```
+```http
+cd client 
+```
 
-```http npm run dev```
+```http
+npm run dev
+```
 
 ## Backend
 
 Navigate to the server folder and run:
 
-```http cd server'''
+```http
+cd server
+```
 
-```http npm run dev```
+```http
+npm run dev
+```
