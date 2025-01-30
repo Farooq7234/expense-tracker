@@ -78,3 +78,29 @@ DELETE /api/v1/expense/delete/:id
 ```http
 GET /api/v1/expense/getinsights
 ```
+
+
+####▶️ Running the Project
+
+##Frontend
+
+Navigate to the client folder and run:
+
+```
+cd client
+```
+
+```
+npm run dev
+```
+##Backend
+
+Navigate to the server folder and run:
+
+```
+cd server
+'''
+
+```
+npm run dev
+```
