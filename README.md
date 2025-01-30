@@ -6,7 +6,7 @@ The **Mini Expense Tracker** is a full-stack web application that helps users tr
 
 ## 🌐 Live Demo
 
-🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/) (if deployed)
+🔗 [Live Demo](https://expense-tracker-frontend-yrfq.onrender.com/) 
 
 ## 🛠️ Tech Stack
 
@@ -20,9 +20,8 @@ The **Mini Expense Tracker** is a full-stack web application that helps users tr
 
 1️⃣ **User Authentication** (Register/Login using JWT)  
 2️⃣ **Expense Management (CRUD)** (Add, Edit, Delete, View)  
-3️⃣ **Filtering & Pagination** (Search by category & date range)  
-4️⃣ **Spending Insights** (Pie chart & bar graph analytics)  
-5️⃣ **Secure API** with authentication & validation
+3️⃣ **Spending Insights** (Pie chart & bar graph analytics)  
+4️⃣ **Secure API** with authentication & validation
 
 ## 📸 Screenshots
 
