@@ -103,6 +103,10 @@ cd client
 ```
 
 ```
+npm i
+```
+
+```
 npm run dev
 ```
 
@@ -112,6 +116,10 @@ Navigate to the server folder and run:
 
 ```
 cd server
+```
+
+```
+npm i
 ```
 
 ```
